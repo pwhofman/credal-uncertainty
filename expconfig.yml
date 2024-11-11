@@ -1,0 +1,44 @@
+PY_EXPERIMENTER:
+  n_jobs: 1
+
+  Database:
+    provider: sqlite
+    database: credal
+    table:
+      name: results
+      keyfields:
+        exp:
+          type: TEXT
+          values: ['ood']
+        data:
+          type: TEXT
+          values: ['food101']
+        ood_data:
+          type: TEXT
+          values: ["svhn, cifar100"]
+        base_model:
+          type: TEXT
+          values: ["resnet"]
+        uncertainty:
+          type: TEXT
+          values: ["ensemble"]
+        # rf specific params
+        num_members:
+          type: INT
+          values: [100]
+        max_depth:
+          type: INT
+          values: [1]
+        runs:
+          type: INT
+          values: [5]
+        measure:
+          type: TEXT
+          values: ["all"]
+        seed:
+          type: INT
+          values: [7]
+      resultfields:
+        aurocs: TEXT
+
+

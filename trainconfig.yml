@@ -1,0 +1,11 @@
+wandb: "online"
+data: "food101"
+num_classes: 101
+epochs: 5
+validate: True
+bs: 256
+lr: 0.001
+wd: 0.0
+base: "resnet"
+unc: "ensemble"
+num_members: 5
