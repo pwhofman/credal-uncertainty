@@ -10,7 +10,7 @@ import os
 MNIST_SIZE = 28
 SVHN_SIZE = 32
 CIFAR_SIZE = 224
-PATH = "./data/"
+PATH = "~/datasets/"
 
 def get_data_ood(data_id, data_ood, batch_size=1024):
     num = 10000

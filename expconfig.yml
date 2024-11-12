@@ -9,16 +9,16 @@ PY_EXPERIMENTER:
       keyfields:
         exp:
           type: TEXT
-          values: ['ood']
+          values: ['arc']
         data:
           type: TEXT
-          values: ['food101']
+          values: ['fmnist']
         ood_data:
           type: TEXT
-          values: ["svhn, cifar100"]
+#          values: ["svhn", "cifar100"]
         base_model:
           type: TEXT
-          values: ["resnet"]
+          values: ["lenet"]
         uncertainty:
           type: TEXT
           values: ["ensemble"]
@@ -31,7 +31,7 @@ PY_EXPERIMENTER:
           values: [1]
         runs:
           type: INT
-          values: [5]
+          values: [1]
         measure:
           type: TEXT
           values: ["all"]

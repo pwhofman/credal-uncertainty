@@ -3,11 +3,10 @@ import torch.cuda
 import torch.nn as nn
 import sklearn.metrics as sm
 import uncertainty as unc
-from typing import Union
 import models as mds
 import utils
 
-def accuracy_rejection(model: Union[nn.Module, mds.RandomForest], x, y, measure, device='cpu'):
+def accuracy_rejection(model, x, y, measure, device='cpu'):
     portion_vals = np.linspace(0, 1, 50, endpoint=False)
 
     acc_tu = np.empty(len(portion_vals))
@@ -16,12 +15,10 @@ def accuracy_rejection(model: Union[nn.Module, mds.RandomForest], x, y, measure,
     acc_ra = np.empty(len(portion_vals))
     acc_bt = np.empty(len(portion_vals))
 
-    if isinstance(model, (mds.RandomForest, mds.CalibratedForest)):
-        preds = model.predict(x)
-    elif isinstance(model, nn.Module):
-        preds, y = utils.torch_get_outputs(model, x, device, samples=20)
-        preds = preds.cpu().detach().numpy()
-        y = y.cpu().detach().numpy()
+
+    preds, y = utils.torch_get_outputs(model, x, device, samples=20)
+    preds = preds.cpu().detach().numpy()
+    y = y.cpu().detach().numpy()
 
     tu = unc.total_uncertainty(preds, measure)
     eu = unc.epistemic_uncertainty(preds, measure)

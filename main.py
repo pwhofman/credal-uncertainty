@@ -10,11 +10,9 @@ from data import get_data, get_data_ood
 import models as mds
 import experiments
 import sklearn.metrics as sm
-from sklearn.model_selection import train_test_split
 from py_experimenter.experimenter import PyExperimenter
 
-# EU_MEASURES = ["entropy", "log", "brier", "spherical", "01", "gh", "diff"]
-EU_MEASURES = ["gh"]
+EU_MEASURES = ["entropy", "log", "brier", "spherical", "01", "gh"]
 
 AU_MEASURES = ["entropy", "log", "brier", "spherical", "01"]
 CHECK_DIR = "./checkpoints/"
